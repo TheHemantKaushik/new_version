@@ -85,7 +85,7 @@ class NewVersion {
   /// JSON document.
   _getiOSStoreVersion(String id, VersionStatus versionStatus) async {
     final url = 'http://itunes.apple.com/lookup?bundleId=$id';
-    final response = await http.get(url);
+    final response = await http.get(Uri.parse(url));
     if (response.statusCode != 200) {
       print('Can\'t find an app in the App Store with the id: $id');
       return null;
@@ -99,7 +99,7 @@ class NewVersion {
   /// Android info is fetched by parsing the html of the app store page.
   _getAndroidStoreVersion(String id, VersionStatus versionStatus) async {
     final url = 'https://play.google.com/store/apps/details?id=$id';
-    final response = await http.get(url);
+    final response = await http.get(Uri.parse(url));
     if (response.statusCode != 200) {
       print('Can\'t find an app in the Play Store with the id: $id');
       return null;
